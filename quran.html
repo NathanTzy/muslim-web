@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>jamiul muslimin</title>
+    <link rel="stylesheet" href="assets/style.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik&display=swap" rel="stylesheet">
+    <link rel="shortcut icon" href="assets/img/matting_Takbir_Islamic_Art_Calligraphy_Allah_PNG_-_Free_Download.png">
+
+</head>
+
+<body>
+    <header class="header">
+        <img src="assets/img/matting_download__1_.png" alt="Loading" class="logo" style="width: 100px; height: 100px;" >
+        <i class="bx bx-menu-alt-left" id="menu-icon" style="color: rgb(32, 32, 32);"></i>
+
+        <nav class="navbar">
+            <a href="index.html">Jadwal Solat</a>
+            <a href="asmaulhusna.html">asmaulhusna</a>
+            <a href="quran.html">Al-quran</a>
+        </nav>
+        <div class="btn">User</div>
+    </header>
+
+    <section class="awal">
+        <div class="main">
+            <div class="wrap">
+                <img src="assets/img/header_alquran.png" alt="3">
+                <img src="assets/img/spirit night.png" alt="2">
+                <img src="assets/img/Tambahkan judul.png" alt="1">
+                <img src="assets/img/spirit night (1).png" alt="">
+            </div>
+        </div>
+    </section>
+
+    <div id="result"></div>
+
+    <script>
+        window.onload = function () {
+            getDataAsma();
+        }
+
+        function getDataAsma() {
+            fetch('https://api.banghasan.com/quran/format/json/surat')
+                .then(function (response) {
+                    if (!response.ok) {
+                        throw new Error('Gagal mengambil data')
+                    }
+                    return response.json();
+                })
+
+                .then(function (data) {
+                    displayData(data);
+                })
+                .catch(function (error) {
+                    console.log(('terjadi kesalahan', error));
+                })
+        }
+
+        function displayData(data) {
+            let resultDiv = document.getElementById("result");
+            resultDiv.innerHTML = '';
+
+            data.hasil.forEach(function (surat) {
+                let suratDiv = document.createElement("div")
+                suratDiv.classList.add("kotak");
+
+                let abuDiv = document.createElement("div")
+                abuDiv.classList.add("kecil");
+
+                let nomerSurat = document.createElement("button")
+                nomerSurat.innerHTML = surat.nomor
+                nomerSurat.classList.add("nomer");
+
+                let namaSurat = document.createElement("h3")
+                namaSurat.innerHTML = surat.nama;
+                namaSurat.classList.add("nama");
+
+                var gambar = document.createElement("save")
+                gambar.classList.add("save");
+
+                var putihDiv = document.createElement("div")
+                putihDiv.classList.add("sukses")
+
+                let ayatSurat = document.createElement("p")
+                ayatSurat.innerHTML = 'jumlah ayat: ' + surat.ayat
+                ayatSurat.classList.add("ayat");
+
+                let arabSurat = document.createElement("h2")
+                arabSurat.innerHTML = surat.asma;
+                arabSurat.classList.add("arab");
+
+                let artiSurat = document.createElement("p")
+                artiSurat.innerHTML = surat.arti;
+                artiSurat.classList.add("arti");
+
+                let value = document.createElement("p")
+                value.classList.add("line");
+
+                suratDiv.appendChild(abuDiv);
+                abuDiv.appendChild(nomerSurat);
+                abuDiv.appendChild(namaSurat);
+                abuDiv.appendChild(gambar);
+                suratDiv.appendChild(putihDiv);
+                putihDiv.appendChild(arabSurat);
+                putihDiv.appendChild(artiSurat);
+                putihDiv.appendChild(ayatSurat);
+                resultDiv.appendChild(suratDiv);
+                putihDiv.appendChild(value);
+            })
+        }
+    </script>

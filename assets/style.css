@@ -1,0 +1,298 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    border: none;
+    outline: none;
+    scroll-behavior: smooth;
+    font-family: 'Rubik', sans-serif;
+    color: rgb(255, 255, 255);
+}
+
+html {
+    font-size: 100%;
+}
+
+body {
+    background-color: rgb(0, 0, 0);
+}
+
+/* navbar */
+header {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 8%;
+    background: rgb(255, 255, 255);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+#menu-icon {
+    font-size: 3.6rem;
+    color: black;
+    display: none;
+}
+
+.logo {
+    width: 8rem;
+    height: 5rem;
+}
+
+.navbar a {
+    color: rgb(0, 0, 0);
+    font-size: 1.3rem;
+    font-weight: 500;
+    margin-right: 2rem;
+    padding: 0 43px;
+    transition: 0.5s;
+}
+
+.navbar  :hover{
+    padding: 15px;
+    background-color: rgb(255, 0, 0);
+    border-radius: 15px 0 15px 0;
+    color: aliceblue;
+}
+
+.btn {
+    display: inline-block;
+    padding: 1rem 2.8rem;
+    border-radius: 1rem;
+    background: whitesmoke;
+    box-shadow: 8px 5px rgba(155, 155, 155, 0.678);
+    color: black;
+    font-size: 1rem;
+    font-weight: 500;
+
+}
+
+.btn:hover{
+    box-shadow:8px 5px 8px  rgb(255, 247, 0) ;
+}
+
+
+/* home */
+.awal{
+    margin-top: 2rem;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.gambar{
+    width: 73rem;
+
+}
+
+
+.main{
+    width: 73rem;
+    margin-top: 200px;
+    top: 50%;
+    left: 50%;
+    position: relative;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    border-radius: 5px;
+    
+}
+
+.wrap{
+    display: flex;
+    animation: slide 10s infinite;
+}
+
+.wrap img{
+    width: 100%;
+}
+
+@keyframes slide{
+    0%{
+        transform: translateX(0) ;
+    }
+
+    10%{
+        transform: translateX(0);
+    }
+    30%{
+        transform: translateX(-100%);
+    }
+    40%{
+        transform: translateX(-200%);
+    }
+    50%{
+        transform: translateX(-300%);
+    }
+    60%{
+        transform: translateX(-300%);
+    }
+    80%{
+        transform: translateX(-200%);
+    }
+    90%{
+        transform: translateX(-100%);
+    }
+    100%{
+        transform: translateX(0);
+    }
+    
+}
+/* jadwal solat */
+
+.container{
+    margin: 20px 9rem;
+}
+
+.card{
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.header-card{
+    padding: 2rem;
+    border-radius: 0.8rem 0.8rem 0 0;
+    font-weight: 600;
+    font-size: 1rem;
+    background-color: rgb(255, 149, 0);
+    color: rgb(192, 192, 192);
+}
+
+.title{
+    font-size: 2rem;
+    margin-bottom: .5rem;
+    font-weight: 550;
+}
+
+.lokasi{
+    justify-content: center;
+    display: flex;
+    gap: 5rem;
+}
+
+.lokasi p{
+    font-size: 1.2rem;
+    font-weight: 500
+}
+
+#city, #province{
+    font-size: 1.2rem;
+    color: black;
+}
+
+
+.table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table-primary th {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    background-color: rgb(185, 185, 185);
+    font-weight: 500;
+    color: white;
+    text-align: center;
+    padding: 8px;
+}
+
+
+
+.table td{
+    text-align: center;
+    padding: 8px;
+    background-color: rgb(255, 255, 255);
+    color: black;
+}
+
+
+
+.table-primary td{
+    background-color: rgb(255, 179, 0);
+}
+
+/* quran & asmaulhusna */
+#result {
+    padding: 2rem 3rem 3rem;
+    margin: 1rem 4rem 4rem;
+    border-radius: 2rem;
+    gap: 3rem;
+    display: grid;
+    grid-template-columns: repeat(3, 50fr);
+    margin-left: 155px
+}
+
+
+
+.kotak {
+    width: 18rem;
+    height: 12rem;
+    margin-bottom: 1rem;
+    background-color: rgb(255, 177, 74);
+    border-radius: 20px 20px 10px 10px;
+}
+
+.kecil {
+    width: 18rem;
+    border-radius: 20px 20px 0 0;
+    background-color: rgb(255, 140, 0);
+    padding-top: .3rem;
+    padding-bottom: .4rem;
+    display: flex;
+    gap: 2rem;
+    justify-content: space-between;
+    vertical-align: middle;
+}
+
+
+.nomer{
+    background-color: rgb(255, 255, 255);
+    padding-right: .5rem ;
+    padding-left: .5rem;
+    text-align: center;
+    border-radius: 3rem;
+    margin-top:.2rem;
+    color: rgb(0, 0, 0);
+}
+
+.save {
+    width: 0.875rem;
+    height: 1.75rem;
+}
+
+.nama {
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.arab {
+    margin-top: .4rem;
+    margin-right: .5rem;
+    text-align: right;
+    font-size: 2rem;
+}
+
+.arti {
+    margin-right: .5rem;
+    text-align: right;
+    font-size: 1rem;
+    margin-top: .3rem;
+}
+
+.ayat {
+    margin-right: .5rem;
+    text-align: center;
+    font-size: 1rem;
+    margin-top: .5rem;
+}
+
+.line {
+    margin-top: 1rem;
+    border-top: 3px solid rgb(255, 255, 255);
+}
