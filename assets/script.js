@@ -4,6 +4,9 @@ const dd = String(date.getDate()).padStart(2, '0');
 // padStart itu buat didepan angka ada angka 0 jika kurang dari 2 digit.
 const mm = String(date.getMonth() + 1).padStart(2, '0');
 const yyyy = date.getFullYear();
+const hour = String(date.getHours()).padStart(2, '0');
+const minute = String(date.getMinutes()).padStart(2, '0');
+const clockNow = `${hour}:${minute}`;
 
 console.log(mm);
 
@@ -87,9 +90,68 @@ fetch(jadwalApi)
             tr.appendChild(ashar);
             tr.appendChild(maghrib);
             tr.appendChild(isya);
+
+            // pengingat solat
+    let solat = document.querySelector('#solat');
+
+    let array1 = ['subuh', 'terbit', 'dhuha', 'dzuhur', 'ashar', 'maghrib', 'isya'];
+    let array2 = ['terbit', 'dhuha', 'dzuhur', 'ashar', 'maghrib', 'isya', 'subuh'];
+    let array3 = ['isya'];
+    let array4 = ['subuh'];
+    let array5 = ['dzuhur'];
+    let array6 = ['terbit'];
+    let array7 = ['dhuha'];
+
+
+    array1.forEach(function (solat1) {
+        array2.forEach(function (solat2) {
+            array3.forEach(function (solat3) {
+                array4.forEach(function (solat4) {
+                    array5.forEach(function (solat5) {
+                        array6.forEach(function(solat6) {
+                            array7.forEach(function(solat7) {
+                                let solat5Time = el[solat5].split(':'); // Memisahkan jam dan menit
+                                let jam = parseInt(solat5Time[0], 10);
+                                let menit = parseInt(solat5Time[1], 10);
+
+                                // Mengurangkan 15 menit
+                                menit -= 15;
+
+                                // Menangani menit negatif (meminjam dari jam)
+                                if (menit < 0) {
+                                    menit += 60;
+                                    jam -= 1;
+                                }
+
+                                // Memformat hasilnya kembali ke format "HH:mm"
+                                let jamFormatted = jam.toString().padStart(2, '0');
+                                let menitFormatted = menit.toString().padStart(2, '0');
+                                let larang = `${jamFormatted}:${menitFormatted}`;
+
+                                console.log(larang);
+                                if (clockNow >= el[solat6] && clockNow < el[solat7]) {
+                                    solat.innerHTML = 'syuruq'
+                                }else if (clockNow >= el[solat1] && clockNow <= el[solat2]) {
+                                    solat.innerHTML = solat1;
+                                } else if (clockNow >= el[solat3]) {
+                                    solat.innerHTML = solat3;
+                                } else if (clockNow >= '00:00' && clockNow < el[solat4]) {
+                                    solat.innerHTML = solat3;
+                                } else if (clockNow >= larang && clockNow < el[solat5]) {
+                                    solat.innerHTML = '(waktu dilarang shalat!!!)';
+                                }
+                            })
+                        })
+                        
+                    })
+                })
+            })
+        })
+    })
         });
     })
 
+    // current time
     function showTime() {
         var date = new Date();
         var h = date.getHours(); // 0 - 23
@@ -112,3 +174,5 @@ fetch(jadwalApi)
         setTimeout(showTime, 1000);
     }
     showTime();
+
+    
