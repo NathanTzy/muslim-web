@@ -296,3 +296,27 @@ header {
     margin-top: 1rem;
     border-top: 3px solid rgb(255, 255, 255);
 }
+
+#time {
+    flex-wrap: wrap;
+    display: flex;
+    justify-content: center;
+    text-align: center;    
+}
+
+.waktu{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;    
+}
+
+#MyClockDisplay{
+    background: aliceblue;
+    color: black;
+    font-weight: 1000;
+    width: 50%;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 3rem;
+}
